@@ -6,8 +6,7 @@ function fib(n) {
     return fib(n - 2) + fib(n - 1);
   }
 }
-
-console.log(fib(8));
+console.log(fib(5));
 
 // Iterative
 
@@ -26,4 +25,4 @@ function fibNumber(n) {
   }
 }
 
-console.log(fibNumber(2));
+console.log(fibNumber(4));
