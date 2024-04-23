@@ -6,7 +6,7 @@ function factorial(n) {
   }
   return fact;
 }
-console.log(factorial(4));
+console.log(factorial(10));
 
 function fibnachi(n) {
   if (n <= 1) {
@@ -16,4 +16,4 @@ function fibnachi(n) {
   }
 }
 
-console.log(fibnachi(34));
+console.log(fibnachi(100));
