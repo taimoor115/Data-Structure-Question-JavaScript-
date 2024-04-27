@@ -61,7 +61,6 @@ function modifyValue(x) {
   x = 10; // Modify the parameter
   console.log("Inside function:", x); // Output: Inside function: 10
 }
-
 let value = 5;
 modifyValue(value);
 console.log("Outside function:", value); // Output: Outside function: 5
@@ -71,13 +70,11 @@ function modifyObject(obj) {
   obj.name = "Alice"; // Modify the object property
   console.log("Inside function:", obj); // Output: Inside function: { name: "Alice" }
 }
-
 let person1 = { name: "Bob" };
 modifyObject(person1);
 console.log("Outside function:", person1); // Output: Outside function: { name: "Alice" }
 
 // Object Methods
-
 // Difference between freeze and seal method
 // Freeze method make the object readonly
 // Object.freeze(person);
@@ -96,3 +93,59 @@ console.log(person);
 // Object.isSealed check weather the object is sealed or not
 console.log(Object.isSealed(person));
 
+// keys, values, entries
+console.log(Object.keys(person));
+console.log(Object.values(person));
+console.log(Object.entries(person));
+
+Object.keys(person).forEach((key) => console.log(key));
+console.log(Object.is(person, person1));
+
+for (let i in person) {
+  console.log(person[i]);
+}
+
+const data = {
+  id: 1,
+  name: ["P1", "P4"],
+  next: {
+    id: 2,
+    name: ["P3"],
+    next: {
+      id: 3,
+      name: ["P3", "P4", "P5"],
+      next: {
+        id: 4,
+        name: ["P1", "P2", "P4"],
+        next: {
+          id: 5,
+          name: ["P2", "P3", "P5"],
+          next: null,
+        },
+      },
+    },
+  },
+};
+
+const playerCount = (data) => {
+  if (data == null) {
+    return {};
+  }
+
+  let countPlayer = {};
+
+  for (let i of data.name) {
+    countPlayer[i] = (countPlayer[i] || 0) + 1;
+  }
+
+  let nextPlayerCount = playerCount(data.next);
+
+  for (let i in nextPlayerCount) {
+    countPlayer[i] = (countPlayer[i] || 0) + nextPlayerCount[i];
+  }
+
+  return countPlayer;
+};
+
+let counterPlayer = playerCount(data);
+console.log(counterPlayer);
